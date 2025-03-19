@@ -1,0 +1,106 @@
+{
+	"info": {
+		"_postman_id": "7c68fe48-272d-49f0-8069-3e6747dbc913",
+		"name": "challenge_biblioteca",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4059409"
+	},
+	"item": [
+		{
+			"name": "health",
+			"item": [
+				{
+					"name": "health",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "books",
+			"item": [
+				{
+					"name": "Save",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n    \"id\": 17,\r\n    \"title\": \"Juego de tronos\",\r\n    \"author\": \"George R.R. Martin\",\r\n    \"publisher\": \"Bantam Spectra\",\r\n    \"country\": \"EE.UU.\",\r\n    \"price\": 35.5,\r\n    \"currency\": \"USD\"\r\n  },",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/books",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/books",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetBoxPrice",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/books/1ll5/boxprice?currency=&quantity=",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"books",
+								"1ll5",
+								"boxprice"
+							],
+							"query": [
+								{
+									"key": "currency",
+									"value": ""
+								},
+								{
+									"key": "quantity",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

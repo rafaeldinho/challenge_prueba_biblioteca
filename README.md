@@ -34,3 +34,6 @@ fuente https://github.com/frsarmientop/PruebaBiblioteca?tab=readme-ov-file
 1. correr comando :  
    ```sh
    make test
+
+## 📦 Collection postman  
+1. dentro del root del app esta el collection postaman
