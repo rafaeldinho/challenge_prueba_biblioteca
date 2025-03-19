@@ -1,4 +1,3 @@
-// coverage:ignore
 package mocks
 
 import (
@@ -6,11 +5,11 @@ import (
 	"github.com/stretchr/testify/mock"
 )
 
-type MockUseCase struct {
+type MockHealthUseCase struct {
 	mock.Mock
 }
 
-func (m *MockUseCase) GetCheck() model.Health {
+func (m *MockHealthUseCase) GetCheck() model.Health {
 	mocked := m.Called()
 	return mocked.Get(0).(model.Health)
 }

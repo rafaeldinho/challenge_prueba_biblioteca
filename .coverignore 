@@ -1,0 +1,4 @@
+src/infrastructure/
+src/test/mocks/
+src/domain/model/
+*_test.go

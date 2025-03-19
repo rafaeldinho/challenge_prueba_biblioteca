@@ -2,7 +2,6 @@ package model
 
 type BookCreated struct {
 	IsAlreadyCreated bool
-	Error            error
 }
 
 type BooksResponse struct {

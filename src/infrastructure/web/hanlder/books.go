@@ -64,7 +64,8 @@ func (h *bookHandler) getBoxPrice(c echo.Context) error {
 		return c.JSON(http.StatusBadRequest, map[string]string{"error": shared.BadRequestMsg})
 	}
 
-	result := h.useCase.GetBoxPrice(&model.BookQuery{BookID: ID, CurrencyFrom: currency, Quantity: qty})
+	body := &model.BookQuery{BookID: ID, CurrencyFrom: currency, Quantity: qty}
+	result := h.useCase.GetBoxPrice(body)
 
 	if result == nil {
 		return c.JSON(http.StatusNotFound, map[string]string{"error": shared.NotFoundRequestMsg})
@@ -85,15 +86,15 @@ func (h *bookHandler) create(c echo.Context) error {
 		return c.JSON(http.StatusBadRequest, map[string]string{"error": err.Error()})
 	}
 
-	result := h.useCase.Create(book)
+	err,result := h.useCase.Create(&book)
 
-	if result == nil {
-		return c.JSON(http.StatusCreated, map[string]string{"message": shared.OKRequestMsg})
+	if err != nil{
+		return c.JSON(http.StatusInternalServerError, map[string]string{"error": err.Error()})
 	}
 
-	if result.IsAlreadyCreated {
+	if result {
 		return c.JSON(http.StatusConflict, map[string]string{"error": shared.ExistRequestMsg})
 	}
 
-	return c.JSON(http.StatusInternalServerError, map[string]string{"error": result.Error.Error()})
+	return c.JSON(http.StatusCreated, map[string]string{"message": shared.OKRequestMsg})
 }
