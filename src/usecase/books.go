@@ -11,7 +11,7 @@ type BookUseCase interface {
 	ListBooks() *model.BooksResponse
 	GetById(int) *model.BookResponse
 	GetBoxPrice(*model.BookQuery) *model.BookBoxResponse
-	Create(model.Book) *model.BookCreated
+	Create(*model.Book) (error,bool)
 }
 
 type bookUseCase struct {
@@ -62,11 +62,6 @@ func (u *bookUseCase) GetBoxPrice(query *model.BookQuery) *model.BookBoxResponse
 	return &model.BookBoxResponse{TotalPrice: totalPrice}
 }
 
-func (u *bookUseCase) Create(book model.Book) *model.BookCreated {
-
-	if err, exists := u.repository.Save(&book); err != nil {
-		return &model.BookCreated{Error: err, IsAlreadyCreated: exists}
-	}
-
-	return nil
+func (u *bookUseCase) Create(book *model.Book) (error,bool) {
+	return u.repository.Save(book)
 }
