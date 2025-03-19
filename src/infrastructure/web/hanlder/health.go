@@ -3,8 +3,9 @@ package handler
 import (
 	"net/http"
 
-	"github.com/challenge_prueba_biblioteca/src/usecase"
 	"github.com/labstack/echo"
+
+	"github.com/challenge_prueba_biblioteca/src/usecase"
 )
 
 type healthHandler struct {

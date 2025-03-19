@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  mongo:
+    container_name: mongo-container
+    volumes:
+      - ~/mongo:/data/db    
+    image: mongo
+    ports:
+      - "27017:27017"
+  api:
+    env_file: .env
+    build:
+      dockerfile: ./Dockerfile
+    image: dna-challenge
+    container_name: dna-challenge-container
+    restart: unless-stopped
+    environment:
+      - MONGO_URL=${MONGO_URL}
+    ports:
+      - "8080:8080"
+    depends_on:
+     - mongo
