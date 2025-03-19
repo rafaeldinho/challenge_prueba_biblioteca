@@ -2,6 +2,7 @@ package usecase
 
 import (
 	"fmt"
+	"strings"
 
 	"github.com/challenge_prueba_biblioteca/src/domain/model"
 	"github.com/challenge_prueba_biblioteca/src/interface/repository"
@@ -44,14 +45,14 @@ func (u *bookUseCase) GetBoxPrice(query *model.BookQuery) *model.BookBoxResponse
 	if err != nil {
 		return nil
 	}
-	query.CurrencyTo = book.Currency
+	query.CurrencyTo = strings.ToUpper(book.Currency)
 
 	currencies, err := u.repository.FetchBooks(query)
 	if err != nil {
 		return nil
 	}
 
-	key := fmt.Sprintf("%s%s", query.CurrencyFrom, query.CurrencyTo)
+	key := fmt.Sprintf("%s%s", strings.ToUpper(query.CurrencyFrom), query.CurrencyTo)
 	rate, exists := currencies.Quotes[key]
 	if !exists {
 		return nil

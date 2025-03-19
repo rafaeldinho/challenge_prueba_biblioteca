@@ -29,7 +29,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "  {\r\n    \"id\": 17,\r\n    \"title\": \"Juego de tronos\",\r\n    \"author\": \"George R.R. Martin\",\r\n    \"publisher\": \"Bantam Spectra\",\r\n    \"country\": \"EE.UU.\",\r\n    \"price\": 35.5,\r\n    \"currency\": \"USD\"\r\n  },",
+							"raw": "  {\r\n    \"id\": 19,\r\n    \"title\": \"Juego de tronos\",\r\n    \"author\": \"George R.R. Martin\",\r\n    \"publisher\": \"Bantam Spectra\",\r\n    \"country\": \"EE.UU.\",\r\n    \"price\": 35.5,\r\n    \"currency\": \"USD\"\r\n  },",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -75,7 +75,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/books/1ll5/boxprice?currency=&quantity=",
+							"raw": "http://localhost:8080/books/19/boxprice?currency=clp&quantity=1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -83,18 +83,38 @@
 							"port": "8080",
 							"path": [
 								"books",
-								"1ll5",
+								"19",
 								"boxprice"
 							],
 							"query": [
 								{
 									"key": "currency",
-									"value": ""
+									"value": "clp"
 								},
 								{
 									"key": "quantity",
-									"value": ""
+									"value": "1"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/books/19",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"books",
+								"19"
 							]
 						}
 					},
